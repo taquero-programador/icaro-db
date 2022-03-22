@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+"""
+connection.py: establece/crea la conexion a la base de datos
+y crear las tablas.
+"""
+
 import sqlite3
 import os
 from sqlite3 import Error

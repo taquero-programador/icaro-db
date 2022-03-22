@@ -1,3 +1,8 @@
+"""
+schemas.py: schemas para general la tablas dentro de la db,
+tambien contien los querys para las consutlas.
+"""
+
 table_times = '''
         CREATE TABLE IF NOT EXISTS tiempos(
         mis_dt text,
@@ -55,3 +60,34 @@ table_resulados = '''
         trn_interval text,
         ov_number_dialed text,
         abandon text)'''
+
+
+load_times = '''INSERT INTO tiempos(
+            mis_dt,
+            service_name,
+            hour,
+            dial,
+            tot_agent,
+            tot_account,
+            inicio,
+            fin,
+            trn_interval,
+            trn_field,
+            bucket) VALUES(?,?,?,?,?,?,?,?,?,?,?)'''
+
+
+load_abnd = '''INSERT INTO abandono(
+            mis_dt,
+            service_name,
+            hour,
+            dial,
+            tot_agent,
+            tot_account,
+            attempts,
+            conections,
+            contacts,
+            direct_contact,
+            message,
+            promise,
+            abandon,
+            exclution) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''
