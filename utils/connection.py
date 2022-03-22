@@ -7,7 +7,6 @@ import utils
 
 print('DB connected!')
 
-
 def conn_db():
 	"genera conexion a la db"
 
