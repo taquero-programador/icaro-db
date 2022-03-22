@@ -8,6 +8,7 @@ import sqlite3
 import utils
 import glob
 import csv
+import os
 from utils.connection import conn, cur
 
 cur.execute('DELETE from tiempos')
@@ -21,16 +22,21 @@ for file in sorted(glob.glob(r'files/RPT_DIALER_PERFORMANCE_*[0-9].csv')):
 		lec = csv.reader(outer_file)
 		fechas = list({n[0] for n in lec})
 
-with open(r'files/tiempos.csv', 'r', encoding='utf-8-sig') as f:
-	lec = csv.reader(f)
 
-	for n in lec:
-		cur.execute(utils.load_times, n)
+def load_data(args, query):
+	"load data to db"
 
-with open(r'files/abandon.csv', 'r', encoding='utf-8-sig') as af:
-	lec = csv.reader(af)
+	for file in query:
+		with open(r'files/' + file, 'r', encoding='utf-8-sig') as loader:
+			lec = csv.reader(loader)
 
-	for i in lec:
-		cur.execute(utils.load_abnd, i)
+			for regs in lec:
+				if file == 'tiempos.csv':
+					cur.execute(utils.load_times, regs)
+				else:
+					cur.execute(utils.load_abnd, regs)
 
-conn.commit()
+			conn.commit()
+
+
+load_data(conn, ['tiempos.csv', 'abandon.csv'])

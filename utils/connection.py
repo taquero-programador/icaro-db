@@ -28,7 +28,7 @@ cur = conn.cursor()
 
 def create_tables(args_conn, query):
 	"creacion de las tablas para la db"
-
+	
 	cur.execute(query)
 	conn.commit()
 

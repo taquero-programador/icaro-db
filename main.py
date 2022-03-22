@@ -4,5 +4,5 @@ import sqlite3
 import os
 import utils
 
-print('main')
+print('Done!')
 
