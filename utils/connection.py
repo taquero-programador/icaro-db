@@ -5,13 +5,13 @@ import os
 from sqlite3 import Error
 import utils
 
-print('DB connected!')
 
 def conn_db():
 	"genera conexion a la db"
 
 	try:
 		conn = sqlite3.connect(r'utils/sqlite.db')
+		print('DB connected!')
 		return conn
 	except Error:
 		print(Error)
