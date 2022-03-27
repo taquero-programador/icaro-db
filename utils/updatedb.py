@@ -8,15 +8,32 @@ una base adicional (elimina y carga).
 import os
 import csv 
 import sqlite3
+import utils
 from utils import cur, conn
 
-# pruebas, no es parte del desarrollo.
-for e in cur.execute('select * from tiempos'):
-	print(e)
+# 8317
 
-r = 'select * from abandono'
-cur.execute(r)
-result = cur.fetchall()
+file_append = "RPT_DIALER_PERFORMANCE.csv"
 
-for w in result:
-	print(w)
+def update_append():
+	"update tabla resultado, new .csv"
+
+	if os.path.exists(file_append):
+		print("se detecto nueva base")
+		quest = input("Desea actualizar [Y/N]: ").lower()
+		if quest == 'y':
+			cur.execute("DELETE from resultado_icaro")
+			print("- Base limpia!")
+			with open(file_append, "r", encoding="utf-8-sig") as update_load:
+				lec = csv.reader(update_load)
+
+				for regs in lec:
+					cur.execute(utils.update_load, regs)
+				conn.commit()
+		elif quest == "n":
+			print("- Sin cambios.")
+		else:
+			print("Comando invalido!!!")
+			return update_append()
+
+update_append()

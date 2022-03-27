@@ -91,3 +91,23 @@ load_abnd = '''INSERT INTO abandono(
             promise,
             abandon,
             exclution) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''
+
+
+update_load = '''INSERT INTO resultado_icaro(
+                        mis_dt,
+                        service_name,
+                        hour,
+                        tot_agentes,
+                        tot_accounts,
+                        attempts,
+                        conections,
+                        direct_contact,
+                        message,
+                        promise,
+                        exclution,
+                        bucket,
+                        start_hour,
+                        end_hour,
+                        trn_interval,
+                        ov_number_dialed,
+                        abandon) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''

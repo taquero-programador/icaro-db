@@ -1,4 +1,3 @@
-from .schemas import *
+from utils.schemas import *
 from utils.connection import conn, cur, create_tables
-from utils.cld import *
-from utils.updatedb import *
+from utils import cld, updatedb
