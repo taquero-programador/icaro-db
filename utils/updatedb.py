@@ -35,5 +35,7 @@ def update_append():
 		else:
 			print("Comando invalido!!!")
 			return update_append()
+	else:
+		print('- Ok DB.')
 
 update_append()
