@@ -24,8 +24,8 @@ def update_append():
 		if quest == 'y':
 			cur.execute("DELETE from resultado_icaro")
 			print("- Base limpia!")
-			with open(file_append, "r", encoding="utf-8-sig") as update_load:
-				lec = csv.reader(update_load)
+			with open(file_append, "r", encoding="utf-8-sig") as update_from_csv:
+				lec = csv.reader(update_from_csv)
 
 				for regs in lec:
 					cur.execute(utils.update_load, regs)
