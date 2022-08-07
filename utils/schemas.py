@@ -111,3 +111,7 @@ update_load = '''INSERT INTO resultado_icaro(
                         trn_interval,
                         ov_number_dialed,
                         abandon) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''
+consulta = '''
+SELECT distinct mis_dt, count(mis_dt)
+FROM resultado_icaro
+GROUP BY mis_dt'''
